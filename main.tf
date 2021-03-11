@@ -1,4 +1,4 @@
-data "intersight_organization_organization" "organization" {
+data "intersight_organization_organization" "test" {
   name = "default"
 }
 
@@ -13,7 +13,7 @@ resource "intersight_kubernetes_sys_config_policy" "test123" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = data.intersight_organization_organization.organization.moid
+    moid        = data.intersight_organization_organization.test.moid
   }
 }
 
@@ -24,6 +24,8 @@ data "intersight_kubernetes_version" "version" {
 resource "intersight_kubernetes_version_policy" "k8s_version" {
 
   name = "test_k8s_version"
+  
+  depends_on = [intersight_kubernetes_sys_config_policy.test123]
 
   nr_version {
     object_type = "kubernetes.Version"
@@ -32,6 +34,6 @@ resource "intersight_kubernetes_version_policy" "k8s_version" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = data.intersight_organization_organization.organization.moid
+    moid        = data.intersight_organization_organization.test.moid
   }
 }
