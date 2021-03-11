@@ -16,3 +16,22 @@ resource "intersight_kubernetes_sys_config_policy" "test123" {
     moid        = data.intersight_organization_organization.organization.moid
   }
 }
+
+data "intersight_kubernetes_version" "version" {
+  kubernetes_version = join("", ["v", var.k8s_version])
+}
+
+resource "intersight_kubernetes_version_policy" "k8s_version" {
+
+  name = "test_k8s_version"
+
+  nr_version {
+    object_type = "kubernetes.Version"
+    moid        = data.intersight_kubernetes_version.version.moid
+  }
+
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.organization.moid
+  }
+}
