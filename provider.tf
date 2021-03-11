@@ -12,3 +12,8 @@ provider "intersight" {
   secretkey = var.secretkey
   endpoint = "intersight.com"
 }
+
+provider "google" {
+  project     = var.project 
+  region      = var.region
+}
