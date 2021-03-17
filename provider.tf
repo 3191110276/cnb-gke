@@ -17,3 +17,7 @@ provider "google" {
   project     = var.project 
   region      = var.region
 }
+
+provider "thousandeyes" {
+  te_token = "var.te_token"
+}
