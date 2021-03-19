@@ -11,7 +11,7 @@ module "google_container_cluster" {
   initial_node_count = 1
 }
 
-resource "node_pool" {
+resource "node_pool" "gke-node-pool" {
   name = "gke-node-pool"
   machine_type = "e2-micro"
   provider = "google"
