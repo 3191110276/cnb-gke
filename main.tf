@@ -1,5 +1,5 @@
 
-module "google_container_cluster" "gke_cluster" {
+module "google_container_cluster" {
   source = "terraform-google-modules/kubernetes-engine/google"
   name = "gke-cluster"
 
