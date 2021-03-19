@@ -4,6 +4,10 @@ terraform {
       source = "CiscoDevNet/intersight"
       version = "1.0.0"
     }
+    thousandeyes = {
+      source = "william20111/thousandeyes"
+      version = "0.3.3"
+    }
   }
 }
 
