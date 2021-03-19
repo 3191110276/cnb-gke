@@ -21,11 +21,6 @@ variable "region" {
   #default = "europe-west3"
 }
 
-variable "GOOGLE_CREDENTIALS" {
-  description = "This authenticates the google provider."
-type = string
-}
-
 variable "zone" {
   type = string
 }
