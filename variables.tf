@@ -26,6 +26,6 @@ variable "GOOGLE_CREDENTIALS" {
 type = string
 }
 
-variables "zone" {
+variable "zone" {
   type = string
 }
