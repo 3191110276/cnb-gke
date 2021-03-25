@@ -3,7 +3,6 @@ data "thousandeyes_agent" "test_agent" {
 }
 
 resource "thousandeyes_http_server" "google_http_test" {
-  name = "google test"
   interval = 120
   url = "https://google.com"
   agents {
