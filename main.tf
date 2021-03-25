@@ -1,11 +1,11 @@
 data "thousandeyes_agent" "test_agent" {
-  name  = "this-is-a-random-test"
+  name  = "na-sjc-2-te [VS01]"
 }
 
-resource "thousandeyes_http_server" "heroku-test" {
-  name = "heroku test"
+resource "thousandeyes_http_server" "google_http_test" {
+  name = "google test"
   interval = 120
-  url = "https://heroku.com"
+  url = "https://google.com"
   agents {
       agent_id = data.thousandeyes_agent.test_agent.agent_id
   }
