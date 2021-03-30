@@ -1,6 +1,6 @@
-data "thousandeyes_agent" "test_agent" {
-  name  = "na-sjc-2-te [VS01]"
-}
+#data "thousandeyes_agent" "test_agent" {
+#  name  = "na-sjc-2-te [VS01]"
+#}
 
 resource "thousandeyes_http_server" "google_http_test" {
   test_name = "google test"
@@ -9,7 +9,7 @@ resource "thousandeyes_http_server" "google_http_test" {
   username = ""
   password = ""
   agents {
-      agent_id = data.thousandeyes_agent.test_agent.agent_id
+      agent_id = 1 #data.thousandeyes_agent.test_agent.agent_id
   }
   agents {
 
