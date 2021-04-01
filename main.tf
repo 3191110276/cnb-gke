@@ -4,7 +4,7 @@ terraform {
 
 module "google_container_cluster" {
   #source = "../../modules/gke-service-account"
-  source = "./modules/gke-cluster"
+  source = "source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v1.17"
   name = "gke-cluster"
 
   project = var.project
