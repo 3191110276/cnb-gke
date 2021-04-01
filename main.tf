@@ -3,7 +3,7 @@ terraform {
 }
 
 module "google_container_cluster" {
-  source = "gruntwork-io/gke/google"
+  source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-service-account?ref=v0.2.0"
   
   name = "gke-cluster"
 
