@@ -87,7 +87,8 @@ resource "node_pool" "gke-node-pool" {
 ### Creating a costum service account to use with the GKE cluster ###
 
 module "gke_service_account" {
- source = "../../modules/gke-service-account"
+ #source = "../../modules/gke-service-account"
+  source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-service-account?ref=v0.2.0"
 
   name        = var.cluster_service_account_name
   project     = var.project
