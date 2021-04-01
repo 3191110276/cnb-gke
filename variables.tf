@@ -17,6 +17,11 @@ variable "region" {
   default = "europe-west3"
 }
 
+variable "location" {
+  description = "The location (region or zone) of the GKE cluster."
+  type        = string
+}
+
 
 
 ### Optional parameters ###
