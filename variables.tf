@@ -1,3 +1,11 @@
+variable "apikey" {
+  type    = string
+}
+
+variable "secretkey" {
+  type    = string
+}
+
 
 variable "project" {
   description = "The project ID to host the cluster in."
