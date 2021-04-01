@@ -6,11 +6,12 @@ variable "project" {
 variable "location" {
   description = "The location (region or zone) of the GKE cluster."
   type        = string
+  default "europe-west3-b"	
 }
 
 variable "region" {
   type = string
-  #default = "europe-west3"
+  default = "europe-west3"
 }
 
 
