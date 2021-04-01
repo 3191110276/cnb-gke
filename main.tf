@@ -3,8 +3,7 @@ terraform {
 }
 
 module "google_container_cluster" {
-  source = "terraform-google-modules/kubernetes-engine/google//modules/beta-public-cluster"
-  #source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v0.2.0"
+  source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v0.2.0"
   name = var.cluster_name
 
   project = var.project
@@ -88,8 +87,7 @@ resource "node_pool" "gke-node-pool" {
 ### Creating a costum service account to use with the GKE cluster ###
 
 module "gke_service_account" {
-  #source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v0.2.0"
-  source = "terraform-google-modules/kubernetes-engine/google//modules/beta-public-cluster"
+  source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v0.2.0"
   
   name        = var.cluster_service_account_name
   project     = var.project
