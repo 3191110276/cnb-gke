@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 0.12.26"
+}
+
 module "google_container_cluster" {
   source = "terraform-google-modules/kubernetes-engine/google"
   name = "gke-cluster"
