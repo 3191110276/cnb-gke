@@ -4,7 +4,7 @@ module "google_container_cluster" {
 
   project_id = var.project
   region = var.region
-  zones = var.zones
+  zone = var.zone
   
   ip_range_pods              = ""
   ip_range_services          = ""
