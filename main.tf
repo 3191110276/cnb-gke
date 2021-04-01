@@ -5,7 +5,7 @@ terraform {
 module "google_container_cluster" {
   #source = "../../modules/gke-service-account"
   source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v0.2.0"
-  name = "gke-cluster"
+  name = var.cluster_name
 
   project = var.project
   location = var.location
@@ -92,7 +92,7 @@ module "gke_service_account" {
 
   name        = var.cluster_service_account_name
   project     = var.project
-  #description = var.cluster_service_account_description
+  description = var.cluster_service_account_description
 }
 
 #Creating a network to deploy the cluster to
