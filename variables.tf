@@ -1,18 +1,4 @@
-/*  
-variable "apikey" {
-  type    = string
-}
 
-variable "secretkey" {
-  type    = string
-}
-
-variable "k8s_version" {
-  type    = string
-  default = "1.18.12"
-}
- */
- 
 variable "project" {
   description = "The project ID to host the cluster in."
   type = string
