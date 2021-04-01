@@ -37,17 +37,11 @@ variable "cluster_name" {
   default     = "gke-cluster"
 }
 
+### Optional parameters ###
 variable "cluster_service_account_name" {
   description = "The name of the custom service account used for the GKE cluster. This parameter is limited to a maximum of 28 characters."
   type        = string
   default     = "cluster-sa"
-}
-
-### Optional parameters ###
-variable "cluster_service_account_name" {
-  description = "The name of the custom service account used for the GKE cluster."
-  type        = string
-  default     = "example-cluster-sa"
 }
 
 variable "vpc_cidr_block" {
