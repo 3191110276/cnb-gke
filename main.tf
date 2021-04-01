@@ -91,6 +91,7 @@ module "gke_service_account" {
   source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v0.2.0"
   
   location = var.location
+  cluster_secondary_range_name    = module.vpc_network.public_subnetwork_secondary_range_name
   
   name        = var.cluster_service_account_name
   project     = var.project
