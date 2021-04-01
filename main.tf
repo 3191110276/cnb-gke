@@ -92,6 +92,8 @@ module "gke_service_account" {
   
   location = var.location
   cluster_secondary_range_name    = module.vpc_network.public_subnetwork_secondary_range_name
+  network = module.vpc_network.network
+  subnetwork                   = module.vpc_network.public_subnetwork
   
   name        = var.cluster_service_account_name
   project     = var.project
