@@ -3,8 +3,8 @@ terraform {
 }
 
 module "google_container_cluster" {
-  source = "../../modules/gke-service-account"
-  
+  #source = "../../modules/gke-service-account"
+  source = "./modules/gke-cluster"
   name = "gke-cluster"
 
   project = var.project
