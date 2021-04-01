@@ -11,6 +11,10 @@ variable "te_token" {
   type = string  
 }
 
+variable "zone" {
+  type = string
+}
+
 variable "project" {
   description = "The project ID to host the cluster in."
   type = string
