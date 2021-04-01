@@ -12,7 +12,7 @@ module "google_container_cluster" {
   network = module.vpc_network.network
 
   subnetwork                      = module.vpc_network.public_subnetwork
-  cluster_secondary_range_name    = module.vpn_network.public_subnetwork_secondary_range_name
+  #cluster_secondary_range_name    = module.vpn_network.public_subnetwork_secondary_range_name
 
   enable_vertical_pod_autoscaling = var.enable_vertical_pod_autoscaling
   #enable_workload_identity        = var.enable_workload_identity
