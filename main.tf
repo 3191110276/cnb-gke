@@ -10,16 +10,16 @@ module "google_container_cluster" {
   project_id = var.project
   region = var.region
   
-  ip_range_pods              = ""
-  ip_range_services          = ""
+  #ip_range_pods              = ""
+  #ip_range_services          = ""
 
   network = module.vpc_network.network
 
   subnetwork                      = module.vpc_network.public_subnetwork
-  #cluster_secondary_range_name    = module.vpn_network.public_subnetwork_secondary_range_name
+  cluster_secondary_range_name    = module.vpn_network.public_subnetwork_secondary_range_name
 
   enable_vertical_pod_autoscaling = var.enable_vertical_pod_autoscaling
-  #enable_workload_identity        = var.enable_workload_identity
+  enable_workload_identity        = var.enable_workload_identity
   
 
 }
