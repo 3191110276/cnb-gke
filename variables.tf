@@ -1,15 +1,11 @@
-variable "apikey" {
-  type    = string
-}
-
-variable "secretkey" {
-  type    = string
-}
-
-
 variable "project" {
   description = "The project ID to host the cluster in."
   type = string
+}
+
+variable "location" {
+  description = "The location (region or zone) of the GKE cluster."
+  type        = string
 }
 
 variable "region" {
@@ -17,9 +13,7 @@ variable "region" {
   default = "europe-west3"
 }
 
-variable "zone" {
-  type = string
-}
+
 
 
 ### Optional parameters ###
