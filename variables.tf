@@ -31,7 +31,11 @@ variable "region" {
 }
 
 
-
+variable "cluster_name" {
+  description = "The name of the Kubernetes cluster."
+  type        = string
+  default     = "gke-cluster"
+}
 
 ### Optional parameters ###
 variable "cluster_service_account_name" {
