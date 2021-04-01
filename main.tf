@@ -1,4 +1,3 @@
-
 module "google_container_cluster" {
   source = "terraform-google-modules/kubernetes-engine/google"
   name = "gke-cluster"
@@ -6,31 +5,110 @@ module "google_container_cluster" {
   project = var.project
   region = var.region
   zones = var.zones
+
+  network = module.vpc_network.network
+
+  subnetwork                      = module.vpc_network.public_subnetwork
+  cluster_secondary_range_name    = module.vpn_network.public_subnetwork_secondary_range_name
+
+  enable_vertical_pod_autoscaling = var.enable_vertical_pod_autoscaling
+  enable_workload_identity        = var.enable_workload_identity
   
-  node_pool = var.node_pool
-  initial_node_count = 1
+  #node_pool = var.node_pool
+  
+  resource_labels = {
+    environment = "testing"
+  }
+
 }
 
 resource "node_pool" "gke-node-pool" {
+  provider = google
   name = "gke-node-pool"
-  machine_type = "e2-micro"
-  provider = "google"
-  cluster = "${google_container_cluster.gke_cluster.name}"
-  node_count = 1
-  #min_node_count
-  #max_node_count
-  
-/* 
-  management {
-    auto_repair  = true
-    auto_upgrade = true
+  region = var.region
+  cluster = module.google_container_cluster.name
+
+  initial_node_count = 1
+
+  autoscaling {
+    min_node_count = 3
+    max_node_count = 1
   }
- */
+
+  management {
+    auto_repair  = "true"
+    auto_upgrade = "true"
+  }
+
 
   node_config {
-    disk_size_gb = 10
-    #machine_type = "e2-medium"
-    machine_type = "e2-micro"
+    image_type = "COS"
+    machine_type = "e2-micro"    
+
+    labels = {
+      all-pools-example = true
+    }
     
+    tags = [
+      module.vpc_network.public,
+      "public-pool-example",
+    ]
+
+
+    disk_size_gb = 10
+    disk-type = "pd-standard" #backed by standard HDD
+    preemptible = false
+
+   
+    service_account = module.google_service_account.default.email
+
+    workload_metadata_config {
+      node_metadata = "GKE_METADATA_SERVER"
+    }
+
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform",
+    ]
+  } 
+
+  lifecycle {
+    ignore_changes = [initial_node_count]
   }
+
+  timeouts {
+    create = "30m"
+    update = "30m"
+    delete = "30m"
+  }
+}
+
+
+
+### Creating a costum service account to use with the GKE cluster ###
+
+module "gke_service_account" {
+ source = "../../modules/gke-service-account"
+
+  name        = var.cluster_service_account_name
+  project     = var.project
+  description = var.cluster_service_account_description
+}
+
+#Creating a network to deploy the cluster to
+
+resource "random_string" "suffix" {
+  length  = 4
+  special = false
+  upper   = false
+}
+
+module "vpc_network" {
+  source = "github.com/gruntwork-io/terraform-google-network.git//modules/vpc-network?ref=v0.6.0"
+
+  name_prefix = "${var.cluster_name}-network-${random_string.suffix.result}"
+  project     = var.project
+  region      = var.region
+
+  cidr_block           = var.vpc_cidr_block
+  secondary_cidr_block = var.vpc_secondary_cidr_block
 }
