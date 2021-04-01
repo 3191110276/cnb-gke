@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 0.14.8"
+  required_version = ">= 0.12.26"
 }
 
 module "google_container_cluster" {
