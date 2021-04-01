@@ -18,9 +18,6 @@ variable "region" {
 }
 
 
-variable "zone" {
-  type = string
-}
 
 ### Optional parameters ###
 variable "cluster_service_account_name" {
