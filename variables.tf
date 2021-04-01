@@ -9,6 +9,11 @@ variable "region" {
   default = "europe-west3"
 }
 
+
+variable "zone" {
+  type = string
+}
+
 ### Optional parameters ###
 variable "cluster_service_account_name" {
   description = "The name of the custom service account used for the GKE cluster."
