@@ -16,8 +16,6 @@ module "google_container_cluster" {
   enable_vertical_pod_autoscaling = var.enable_vertical_pod_autoscaling
   #enable_workload_identity        = var.enable_workload_identity
   
-  node_pools = var.node_pool
-
 
 }
 
