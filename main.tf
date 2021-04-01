@@ -16,9 +16,9 @@ module "google_container_cluster" {
   
   #node_pool = var.node_pool
   
-  resource_labels = {
-    environment = "testing"
-  }
+  #resource_labels = {
+  #  environment = "testing"
+  #}
 
 }
 
