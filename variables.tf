@@ -7,7 +7,7 @@ variable "secretkey" {
   type    = string
 }
 
-var "te_token" {
+variable "te_token" {
   type = string  
 }
 
