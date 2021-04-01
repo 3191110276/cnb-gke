@@ -5,6 +5,8 @@ module "google_container_cluster" {
   project_id = var.project
   region = var.region
   zones = var.zones
+  
+  ip_range_services          = ""
 
   network = module.vpc_network.network
 
