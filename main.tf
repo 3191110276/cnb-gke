@@ -16,7 +16,7 @@ module "google_container_cluster" {
   network = module.vpc_network.network
 
   subnetwork                      = module.vpc_network.public_subnetwork
-  cluster_secondary_range_name    = module.vpn_network.public_subnetwork_secondary_range_name
+  cluster_secondary_range_name    = module.vpc_network.public_subnetwork_secondary_range_name
     
   #alternative_default_service_account = var.override_default_node_pool_service_account ? module.gke_service_account.email : null
 
