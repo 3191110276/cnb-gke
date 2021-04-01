@@ -27,10 +27,6 @@ variable "zone" {
   type = string
 }
 
-var "location" {
-  type = string
-}
-
 
 
 ### Optional parameters ###
