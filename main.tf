@@ -2,7 +2,7 @@ module "google_container_cluster" {
   source = "terraform-google-modules/kubernetes-engine/google"
   name = "gke-cluster"
 
-  project = var.project
+  project_id = var.project
   region = var.region
   zones = var.zones
 
