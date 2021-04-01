@@ -10,9 +10,6 @@ module "google_container_cluster" {
   project = var.project
   location = var.location
 
-  #ip_range_pods              = ""
-  #ip_range_services          = ""
-
   network = module.vpc_network.network
 
   subnetwork                      = module.vpc_network.public_subnetwork
@@ -21,8 +18,8 @@ module "google_container_cluster" {
   #alternative_default_service_account = var.override_default_node_pool_service_account ? module.gke_service_account.email : null
 
     
-  enable_vertical_pod_autoscaling = var.enable_vertical_pod_autoscaling
-  enable_workload_identity        = var.enable_workload_identity
+  #enable_vertical_pod_autoscaling = var.enable_vertical_pod_autoscaling
+  #enable_workload_identity        = var.enable_workload_identity
   
 }
 
