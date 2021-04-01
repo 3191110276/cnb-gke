@@ -9,7 +9,7 @@ module "google_container_cluster" {
 
   project = var.project
   region = var.region
-  location = var.location
+  location = var.zone
 
   #ip_range_pods              = ""
   #ip_range_services          = ""
