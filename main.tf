@@ -7,7 +7,7 @@ module "google_container_cluster" {
   
   name = "gke-cluster"
 
-  project_id = var.project
+  project = var.project
   region = var.region
   location = var.location
 
