@@ -20,7 +20,7 @@ module "google_container_cluster" {
 }
 
 resource "node_pool" "gke-node-pool" {
-  provider = google-beta
+  provider = google
   name = "gke-node-pool"
   region = var.region
   cluster = module.google_container_cluster.name
