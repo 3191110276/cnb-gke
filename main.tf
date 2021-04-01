@@ -95,7 +95,7 @@ module "gke_service_account" {
 
   name        = var.cluster_service_account_name
   project     = var.project
-  description = var.cluster_service_account_description
+  #description = var.cluster_service_account_description
 }
 
 #Creating a network to deploy the cluster to
