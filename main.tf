@@ -8,7 +8,6 @@ module "google_container_cluster" {
   name = "gke-cluster"
 
   project = var.project
-  region = var.region
   location = var.zone
 
   #ip_range_pods              = ""
