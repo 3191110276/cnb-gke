@@ -31,7 +31,7 @@ resource "node_pool" "gke-node-pool" {
   initial_node_count = 1
 
   autoscaling {
-    min_node_count = 3
+    min_node_count = 2
     max_node_count = 1
   }
 
