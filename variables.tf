@@ -11,10 +11,6 @@ variable "te_token" {
   type = string  
 }
 
-variable "zone" {
-  type = string
-}
-
 variable "project" {
   description = "The project ID to host the cluster in."
   type = string
@@ -27,5 +23,6 @@ variable "location" {
 }
 
 variable "region" {
+  description = "The region to host the GKE cluster in."
   type = string
 }
