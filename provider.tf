@@ -1,12 +1,14 @@
 terraform {
   required_providers {
-    thousandeyes = {
-      source = "william20111/thousandeyes"
-      version = "0.3.3"
+     = {
+      source = "CiscoDevNet/intersight"
+      version = "1.0.4"
     }
   }
 }
 
-provider "thousandeyes" {
-  token = "var.te_token"
+provider "intersight" {
+  apikey = var.api_key
+  secretkey = var.secret_key
+  endpoint = "intersight.com"
 }
