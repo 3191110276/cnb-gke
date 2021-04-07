@@ -29,8 +29,3 @@ variable "location" {
 variable "region" {
   type = string
 }
-
-
-variable "env_name" {
-  description = "The environment for the GKE cluster"
-  default     = "prod"
