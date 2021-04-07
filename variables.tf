@@ -31,6 +31,10 @@ variable "region" {
 }
 
 
+variable "env_name" {
+  description = "The environment for the GKE cluster"
+  default     = "prod"
+
 variable "cluster_name" {
   description = "The name of the Kubernetes cluster."
   type        = string
