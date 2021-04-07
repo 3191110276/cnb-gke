@@ -27,3 +27,26 @@ module "gcp-network" {
     ]
   }
 }
+
+  
+module "gke" {
+  source                 = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
+  project_id             = var.project
+  name                   = "gke"
+  regional               = true
+  region                 = var.region
+  network                = module.gcp-network.network_name
+  subnetwork             = module.gcp-network.subnets_names[0]
+  ip_range_pods          = "pods"
+  ip_range_services      = "services"
+  node_pools = [
+    {
+      name                      = "node-pool"
+      machine_type              = "e2-micro"
+      node_locations            = "europe-west3-a,europe-west3-b,europe-west3-c"
+      min_count                 = 1
+      max_count                 = 2
+      disk_size_gb              = 30
+    },
+  ]
+}
