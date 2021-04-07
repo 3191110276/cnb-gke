@@ -1,28 +1,31 @@
-
-variable "apikey" {
-  type    = string
+variable "project_id" {
+  description = "The project ID to host the cluster in"
 }
-
-variable "secretkey" {
-  type    = string
+variable "cluster_name" {
+  description = "The name for the GKE cluster"
+  default     = "gke-cluster"
 }
-
-variable "te_token" {
-  type = string  
+variable "env_name" {
+  description = "The environment for the GKE cluster"
+  default     = "prod"
 }
-
-variable "project" {
-  description = "The project ID to host the cluster in."
-  type = string
-}
-
-variable "location" {
-  description = "The location (region or zone) of the GKE cluster."
-  type        = string
-  default = "europe-west3-a"	
-}
-
 variable "region" {
-  description = "The region to host the GKE cluster in."
-  type = string
+  description = "The region to host the cluster in"
+  default     = "europe-west1"
+}
+variable "network" {
+  description = "The VPC network created to host the cluster in"
+  default     = "gke-network"
+}
+variable "subnetwork" {
+  description = "The subnetwork created to host the cluster in"
+  default     = "gke-subnet"
+}
+variable "ip_range_pods_name" {
+  description = "The secondary ip range to use for pods"
+  default     = "ip-range-pods"
+}
+variable "ip_range_services_name" {
+  description = "The secondary ip range to use for services"
+  default     = "ip-range-services"
 }
