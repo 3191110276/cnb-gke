@@ -19,7 +19,7 @@ module "appdynamics" {
   appd_account_name = var.appd_account_name
   appd_controller_hostname = ""
   appd_controller_key = ""
-  appd_controller_url = ""
+  appd_controller_url = "https://ceer.saas.appdynamics.com/controller/"
   appd_global_account = ""
   appd_password = var.appd_pw
   appd_username = var.appd_un
