@@ -6,7 +6,7 @@ resource "intersight_kubernetes_sys_config_policy" "test123" {
 
   name = "test_k8s_sysconfig"
 
-  dns_servers = ["11.51.75.254"]
+  dns_servers = ["10.51.75.254"]
 
   ntp_servers = ["10.51.75.240"]
   timezone = "Europe/Vienna"
