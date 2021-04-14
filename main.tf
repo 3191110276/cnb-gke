@@ -64,3 +64,46 @@ resource "local_file" "kubeconfig" {
   content  = module.gke_auth.kubeconfig_raw
   filename = "kubeconfig-env_name"
 }
+
+  
+resource "kubernetes_namespace" "appD" {
+  name = "appD"
+    
+  metadata {
+    name = "appD"
+    }
+  }
+  
+resource "kubernetes_deployement" "appD" {
+  metadata {
+    name = "appD"
+    namespace = kubernetes_namespace.appD.id
+    
+    spec {
+      container {
+        image = "app image...."
+        name = "appD"
+        }
+      }
+    }
+  }  
+  
+resource "kubernetes_service" "appD" {
+  metadata = {
+    name = "appD"
+    namespace = kubernetes_namespace.appD.id
+    
+    spec {
+      selector {
+        app = kubernetes_deployement.appD.metadata0.labels.app
+        }
+      }
+    }
+  
+  port {
+    port = 8080
+    target_port = 80
+    }
+  
+  type = "LoadBalancer" 
+  }
