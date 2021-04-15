@@ -82,7 +82,7 @@ resource "kubernetes_deployement" "appD" {
     }
     
   spec {
-    replicas = 2
+    replicas = 1
     
     selector {
       match_labels = {
