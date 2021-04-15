@@ -67,8 +67,6 @@ resource "local_file" "kubeconfig" {
 
   
 resource "kubernetes_namespace" "appD" {
-  name = "appD"
-    
   metadata {
     name = "appD"
     }
@@ -78,8 +76,27 @@ resource "kubernetes_deployement" "appD" {
   metadata {
     name = "appD"
     namespace = kubernetes_namespace.appD.id
+    labels = {
+      app = "appD"
+      }
+    }
     
-    spec {
+  spec {
+    replicas = 2
+    
+    selector {
+      match_labels = {
+        app = "appD"
+        }
+      }
+    
+    template {
+      metadata {
+        labels = {
+          app = "appD"
+          }
+        }
+      spec {
       container {
         image = "app image...."
         name = "appD"
@@ -87,23 +104,21 @@ resource "kubernetes_deployement" "appD" {
       }
     }
   }  
+ }
   
 resource "kubernetes_service" "appD" {
   metadata = {
     name = "appD"
     namespace = kubernetes_namespace.appD.id
-    
-    spec {
-      selector {
-        app = kubernetes_deployement.appD.metadata0.labels.app
+    }
+  spec {
+    selector = {
+      app = kubernetes_deployement.appD.metadata0.labels.app
+      }
+      port {
+        port = 8080
+        target_port = 80
         }
+      type = "LoadBalancer" 
       }
     }
-  
-  port {
-    port = 8080
-    target_port = 80
-    }
-  
-  type = "LoadBalancer" 
-  }
