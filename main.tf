@@ -113,7 +113,7 @@ resource "kubernetes_service" "appD" {
     }
   spec {
     selector = {
-      app = kubernetes_deployement.appD.metadata0.labels.app
+      app = kubernetes_deployement.appD.metadata.0.labels.app
       }
       port {
         port = 8080
