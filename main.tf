@@ -42,8 +42,8 @@ module "gke" {
   node_pools = [
     {
       name                      = "node-pool"
-      machine_type              = "e2-micro"
-      node_locations            = "europe-west3-a,europe-west3-b,europe-west3-c"
+      machine_type              = "e2-medium"
+      node_locations            = "europe-west3-a,europe-west3-b"
       min_count                 = 1
       max_count                 = 2
       disk_size_gb              = 30
@@ -66,59 +66,23 @@ resource "local_file" "kubeconfig" {
 }
 
   
-resource "kubernetes_namespace" "appD" {
-  metadata {
-    name = "appD"
-    }
-  }
   
-resource "kubernetes_deployement" "appD" {
-  metadata {
-    name = "appD"
-    namespace = kubernetes_namespace.appD.id
-    labels = {
-      app = "appD"
-      }
-    }
-    
-  spec {
-    replicas = 1
-    
-    selector {
-      match_labels = {
-        app = "appD"
-        }
-      }
-    
-    template {
-      metadata {
-        labels = {
-          app = "appD"
-          }
-        }
-      spec {
-      container {
-        image = "app image...."
-        name = "appD"
-        }
-      }
-    }
-  }  
- }
+module "appdynamics" {
+  source  = "3191110276/appdynamics/kubernetes"
+  version = "0.1.17"
+
+  appd_account_name        = var.appD_account_name
+  appd_global_account      = var.appd_global_account
+  appd_controller_url      = "https://ceer.saas.appdynamics.com:443"
+  appd_controller_hostname = "ceer.saas.appdynamics.com"
+  appd_controller_key      = var.appd_controller_key 
+  appd_username            = var.appd_username
+  appd_password            = var.appd_password
+
+  cluster_name = "gke"
+
+  ns_to_monitor = ["accounting", "appdynamics", "automation", "default", "iks", "iwo", "kube-node-lease", "kube-public", "kube-system", "order", "procurement"]
+ 
+}
   
-resource "kubernetes_service" "appD" {
-  metadata = {
-    name = "appD"
-    namespace = kubernetes_namespace.appD.id
-    }
-  spec {
-    selector = {
-      app = kubernetes_deployement.appD.metadata.0.labels.app
-      }
-      port {
-        port = 8080
-        target_port = 80
-        }
-      type = "LoadBalancer" 
-      }
-    }
+  
