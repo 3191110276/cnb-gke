@@ -68,7 +68,7 @@ resource "local_file" "kubeconfig" {
 
 module "appdynamics" {
   source  = "3191110276/appdynamics/kubernetes"
-  version = ">= 2.0.2"
+  version = "0.1.17"
 
   appd_account_name        = var.appD_account_name
   appd_global_account      = var.appd_global_account
