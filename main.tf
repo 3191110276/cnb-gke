@@ -2,7 +2,7 @@ terraform {
     required_providers {
     k8s = {
       source  = "hashicorp/k8s"
-      version = " 0.7.6"
+      version = ">= 2.0.2"
     }
   }
 
