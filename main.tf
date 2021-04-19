@@ -65,41 +65,7 @@ resource "local_file" "kubeconfig" {
   filename = "kubeconfig-env_name"
 }
 
-module "cnb" {
-  source  = "3191110276/cnb/kubernetes"
-  version = "0.2.0"
 
-  appd_browserapp_key       = module.order-app.eum_key
-  appd_browserapp_beaconurl = "fra-col.eum-appdynamics.com"
-
-  appd_account_name        = var.appD_account_name
-  appd_controller_hostname = "ceer.saas.appdynamics.com"
-  appd_controller_port     = "443"
-  appd_controller_key      = var.appd_controller_key 
-
-  deploy_order = true
-  order_subcomponents_deployment = {
-    nginx_ingress   = false
-    orderfile       = true
-    adminfile       = false
-    apiserver       = true
-    inventorydb     = false
-    payment         = true
-    orderprocessing = false
-    orderqueue      = false
-    notification    = false
-    prodrequest     = false
-    production      = false
-    fulfilment      = false
-  }
-
-  deploy_trafficgen  = false
-  deploy_extprod     = false
-  deploy_extpayment  = false
-  deploy_accounting  = false
-  deploy_procurement = false
-}  
-  
 module "appdynamics" {
   source  = "3191110276/appdynamics/kubernetes"
   version = "0.1.17"
