@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "thousandeyes" {
-  token = var.token
+  token = var.te_token
 }
