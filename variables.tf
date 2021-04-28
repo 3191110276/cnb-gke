@@ -18,7 +18,7 @@ variable "te_token" {
 }
 
 # AppD 
-variable "appd_account_name" {
+variable "appd_account_name" { 
   type    = string
 }
 
