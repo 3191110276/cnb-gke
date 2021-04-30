@@ -1,6 +1,6 @@
 module "gke-cisco" {
   source              = "namjachingu/gke-cisco/google"
-  version             = "0.1.27"
+  version             = "0.1.28"
   apikey              = var.apikey
   secretkey           = var.secretkey
   te_token            = var.te_token
