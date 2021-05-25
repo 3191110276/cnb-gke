@@ -1,5 +1,5 @@
 resource "thousandeyes_page_load" "test2" {
-  test_name = "google_pageload"
+  test_name = "website_pageload"
   
   alerts_enabled         = 0
   bandwidth_measurements = 0
@@ -7,7 +7,7 @@ resource "thousandeyes_page_load" "test2" {
 
   content_regex = ".*"
   
-  url      = "https://google.com"
+  url      = var.test_page
   
   interval      = 300
   http_interval = 300
