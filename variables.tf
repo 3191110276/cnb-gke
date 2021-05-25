@@ -17,6 +17,11 @@ variable "te_token" {
   type    = string
 }
 
+variable "test_page" {
+  type    = string
+  description = "website of the page that the test will be perfomed on"
+} 
+
 # AppD 
 variable "appd_account_name" { 
   type    = string
